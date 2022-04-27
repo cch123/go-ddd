@@ -3,17 +3,17 @@ package order
 import (
 	"fmt"
 	"github.com/cch123/go-ddd/domain/entity"
-	"github.com/cch123/go-ddd/domain/iface"
+	"github.com/cch123/go-ddd/domain/irepo"
 	"time"
 )
 
 // Order should impl order repo interface
-type Order struct{} // impl iface.OrderRepo
+type Order struct{} // impl irepo.OrderRepo
 
-var _ iface.OrderRepo = &Order{}
+var _ irepo.OrderRepo = &Order{}
 
 // NewOrder create a new customer
-func NewOrder() iface.OrderRepo {
+func NewOrder() irepo.OrderRepo {
 	return &Order{}
 }
 

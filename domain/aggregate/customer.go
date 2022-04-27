@@ -1,12 +1,12 @@
 package aggregate
 
-import "github.com/cch123/go-ddd/domain/iface"
+import "github.com/cch123/go-ddd/domain/irepo"
 
 type CustomerAgg struct {
-	customer iface.CustomerRepo
+	customer irepo.CustomerRepo
 }
 
-func NewCustomerAgg(customer iface.CustomerRepo) *CustomerAgg {
+func NewCustomerAgg(customer irepo.CustomerRepo) *CustomerAgg {
 	return &CustomerAgg{
 		customer: customer,
 	}

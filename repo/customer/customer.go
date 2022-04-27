@@ -1,15 +1,15 @@
 package customer
 
 import (
-	"github.com/cch123/go-ddd/domain/iface"
+	"github.com/cch123/go-ddd/domain/irepo"
 )
 
 // Customer should impl customer repo interface
 type Customer struct{} // impl Customer repo
-var _ iface.CustomerRepo = &Customer{}
+var _ irepo.CustomerRepo = &Customer{}
 
 // NewCustomer create a new customer
-func NewCustomer() iface.CustomerRepo {
+func NewCustomer() irepo.CustomerRepo {
 	return &Customer{}
 }
 

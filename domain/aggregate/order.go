@@ -2,14 +2,14 @@ package aggregate
 
 import (
 	"context"
-	"github.com/cch123/go-ddd/domain/iface"
+	"github.com/cch123/go-ddd/domain/irepo"
 )
 
 type OrderAgg struct {
-	order iface.OrderRepo
+	order irepo.OrderRepo
 }
 
-func NewOrderAgg(o iface.OrderRepo) *OrderAgg {
+func NewOrderAgg(o irepo.OrderRepo) *OrderAgg {
 	return &OrderAgg{order: o}
 }
 

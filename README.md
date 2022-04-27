@@ -10,4 +10,6 @@ TODO:
 - [ ] add middlewares
 - [ ] test demos
 - [ ] code generation by scripts
- 
+- [ ] integrate with viper
+- [ ] integrate with openapi/swagger
+- [ ] mysql pool options confirm

@@ -1,8 +1,8 @@
-package iface
+package irepo
 
 import "github.com/cch123/go-ddd/domain/entity"
 
-// OrderRepo is for order iface
+// OrderRepo is for order irepo
 type OrderRepo interface {
 	// GetTopAmountOrder get the most expensive order
 	GetTopAmountOrder() entity.Order
