@@ -3,28 +3,29 @@ package app
 import (
 	"context"
 	"fmt"
+	"github.com/cch123/go-ddd/app/protocol"
 	"github.com/cch123/go-ddd/domain/aggregate"
-	"github.com/cch123/go-ddd/repo/data"
 )
 
 func Main() {
-	app := initApp(1)
-	err := app.run()
+	app, err := initApp()
 	if err != nil {
 		// log fatal
+		fmt.Println(err)
+		return
+	}
+
+	err = app.run()
+	if err != nil {
+		// log fatal
+		fmt.Println(err)
+		return
 	}
 
 	fmt.Println(app)
 
-	c, err := data.NewClient("root:@tcp(localhost:3306)/shopping?parseTime=True")
-	if err != nil {
-		fmt.Println("database init failed", err)
-		return
-	}
-	customer, err := c.Customer.Get(context.TODO(), 1)
-	fmt.Println("yes", customer, err)
-
 	app.removeIllegalOrder(context.Background())
+	protocol.InitHTTPServer()
 }
 
 type app struct {

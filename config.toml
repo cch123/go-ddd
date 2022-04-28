@@ -1,0 +1,4 @@
+[mysql]
+dsn = "root:@tcp(localhost:3306)/shopping?parseTime=True"
+
+[redis]

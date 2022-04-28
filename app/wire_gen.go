@@ -8,17 +8,27 @@ package app
 
 import (
 	"github.com/cch123/go-ddd/domain/aggregate"
+	"github.com/cch123/go-ddd/infra/config/static"
 	"github.com/cch123/go-ddd/repo/customer"
+	"github.com/cch123/go-ddd/repo/data"
 	"github.com/cch123/go-ddd/repo/order"
 )
 
 // Injectors from wire.go:
 
-func initApp(i int) *app {
+func initApp() (*app, error) {
 	customerRepo := customer.NewCustomer()
-	aggregateCustomer := aggregate.NewCustomerAgg(customerRepo)
-	orderRepo := order.NewOrder()
-	aggregateOrder := aggregate.NewOrderAgg(orderRepo)
-	appApp := newApp(aggregateCustomer, aggregateOrder)
-	return appApp
+	customerAgg := aggregate.NewCustomerAgg(customerRepo)
+	config, err := static.ReadConfig()
+	if err != nil {
+		return nil, err
+	}
+	client, err := data.NewClient(config)
+	if err != nil {
+		return nil, err
+	}
+	orderRepo := order.NewOrder(client)
+	orderAgg := aggregate.NewOrderAgg(orderRepo)
+	appApp := newApp(customerAgg, orderAgg)
+	return appApp, nil
 }

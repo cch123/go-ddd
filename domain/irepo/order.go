@@ -1,13 +1,13 @@
 package irepo
 
-import "github.com/cch123/go-ddd/domain/entity"
+import (
+	"context"
+	"github.com/cch123/go-ddd/domain/entity"
+)
 
 // OrderRepo is for order irepo
 type OrderRepo interface {
-	// GetTopAmountOrder get the most expensive order
-	GetTopAmountOrder() entity.Order
-
-	DeleteOrderByID(orderID int64) error
-
+	DeleteOrderByID(ctx context.Context, orderID int) error
 	GetOrderHistoryByCustomerID(customerID int64) []entity.Order
+	PlaceOrder(ctx context.Context, info entity.OrderCreateInfo) error
 }

@@ -4,6 +4,8 @@ go 1.17
 
 require (
 	entgo.io/ent v0.10.2-0.20220321093754-edd968490ea2
+	github.com/BurntSushi/toml v1.1.0
+	github.com/go-chi/chi/v5 v5.0.7
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/google/wire v0.5.0
 )

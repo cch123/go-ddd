@@ -1,7 +1,7 @@
 package aggregate
 
 type RemoveIllegalOrderReq struct {
-	OrderID int64
+	OrderID int
 }
 
 type RemoveIllegalOrderResponse struct{}
